@@ -1,4 +1,4 @@
--- # QUERY CON SELECT 
+-- # QUERY CON SELECT # --
 
 -- 1. Selezionare tutti gli studenti nati nel 1990 (160)
 
@@ -34,6 +34,24 @@ SELECT COUNT(*) FROM `departments`;
 
 SELECT * FROM `teachers` WHERE `phone` IS NULL;
 
+--------------------------------------------
 
+-- # QUERY CON GROUP BY # --
+
+-- 1. Contare quanti iscritti ci sono stati ogni anno
+
+SELECT YEAR(`enrolment_date`) AS `anno_di_iscrizione`, COUNT(*) AS `totale_studenti` FROM `students` GROUP BY `anno_di_iscrizione`;
+
+-- 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+
+SELECT `office_address` AS `indirizzo_ufficio`, COUNT(*) AS `numero_insegnanti` FROM `teachers` GROUP BY `indirizzo_ufficio`;
+
+-- 3. Calcolare la media dei voti di ogni appello d'esame
+
+SELECT `exam_id` AS `id_esame`, AVG(`vote`) AS `media_voti` FROM `exam_student` GROUP BY `id_esame`;
+
+-- 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+
+SELECT `department_id` AS `id_dipartimento`, COUNT(*) AS `numero_corsi` FROM `degrees` GROUP BY `id_dipartimento`;
 
 
